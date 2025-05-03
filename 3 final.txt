@@ -1,0 +1,24 @@
+1)import pandas as pd
+2)df = pd.read_csv("/content/sample_data/Iris.csv")
+df
+3)df.describe()
+4)df["SepalLengthCm"].describe()
+5)df["SepalLengthCm"].describe()
+6)df.groupby("Species").describe()
+7)df.groupby("Species").describe().sum()
+or
+3)df.shape
+4)df.isnull().sum()
+5)df.dtypes
+6)df.info()
+7)df.drop(columns='species',inplace=True)
+df
+8)np.min(df)
+np.min(df['sepal_length'])
+np.min(df['sepal_width'])
+np.min(df['petal_length'])
+np.min(df['petal_width'])
+9)df.quantile(0.25)
+10)df.quantile(0.50)
+11)df.quantile(0.75)
+

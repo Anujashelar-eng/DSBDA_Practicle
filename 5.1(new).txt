@@ -1,0 +1,114 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+
+df = pd.read_csv('Social_Network_Ads.csv')
+
+df
+
+df.shape
+
+df.columns
+
+df.dtypes
+
+df.info()
+
+df.describe()
+
+x = df.iloc[:,[2,3]].values
+
+x
+
+y = df.iloc[:,4].values
+
+y
+
+from sklearn.model_selection import train_test_split
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.25, random_state = 0)
+
+x_train
+
+x_test.shape
+
+y_test
+
+y_test.shape
+
+from sklearn.preprocessing import StandardScaler
+sc = StandardScaler()
+x_train = sc.fit_transform(x_train)
+x_test = sc.transform(x_test)
+
+x_train
+
+from sklearn.linear_model import LogisticRegression
+log_reg = LogisticRegression(random_state = 0)
+log_reg.fit(x_train, y_train)
+
+y_pred = log_reg.predict(x_test)
+
+y_pred
+
+y_test
+
+from sklearn.metrics import accuracy_score
+accuracy = accuracy_score(y_test,y_pred) * 100
+accuracy
+
+
+//new code
+Assign 5
+1)import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+2)df = pd.read_csv("/content/Social_Network_Ads.csv")
+df
+3)x = df.iloc[:,[2,3]].values
+x
+4)y = df.iloc[:,4].values
+y
+5)from sklearn.model_selection import train_test_split
+x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=0.25,random_state=0)
+6)x_train
+7)x_test.shape
+8)y_test
+9)y_test.shape
+10)from sklearn.preprocessing import StandardScaler
+sc = StandardScaler()
+x_train = sc.fit_transform(x_train)
+x_test = sc.transform(x_test)
+11)x_train
+12)from sklearn.linear_model import LogisticRegression
+classifier = LogisticRegression(random_state=0)
+classifier.fit(x_train,y_train)
+13)y_pred = classifier.predict(x_test)
+y_pred
+14)y_test
+15)from sklearn.metrics import confusion_matrix
+cm = confusion_matrix(y_test,y_pred)
+cm
+16)from sklearn.metrics import accuracy_score
+ac = accuracy_score(y_test,y_pred)
+ac
+17)tp =cm[0,[0]]
+print('True Positive : ',tp)
+18)fp =cm[0,[1]]
+print('False Positive : ',fp)
+19)fn =cm[1,[0]]
+print('False Negative : ',fn)
+20)tn=cm[1,[1]]
+print('True Negative : ',tn)
+21)accuracy = (tp+tn)/(tp+tn+fp+fn)
+print('Accuracy : ',accuracy)
+#
+22)error_rate = (fp+fn)/(tp+tn+fp+fn)
+print('Error Rate : ',error_rate)
+23)precision = tp/(tp+fp)
+print('Precision : ',precision)
+24)recall = tp/(tp+fn)
+print('Recall : ',recall)
+25)specificity = tn/(tn+fp)
+print('Specificity : ',specificity)
+
